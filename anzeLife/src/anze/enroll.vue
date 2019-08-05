@@ -1,15 +1,139 @@
 <template>
-  <div class="">
-    5555
+  <div class="loginInBac">
+    <div class="">
+      <div class="logInIpt">
+        <div class="userName">
+          <span class="icon iconfont">&#xe608;</span>
+          <input type="text" placeholder="请输入手机号">
+        </div>
+        <div class="password">
+          <div>
+            <span class="icon iconfont">&#xe60a;</span>
+            <input type="password" placeholder="请输入密码">
+          </div>
+          <input type="button" class="getCode" value="获取验证码">
+        </div>
+        <ul class="loginPrompt">
+          <li>已有账号，登录</li>
+        </ul>
+        <button class="loginBtn">注册</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
-  name: 'App'
+  name: ''
 }
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+.loginInBac {
+  background: url(../img/enr.png);
+  background-size: 100%;
+  display: flex;
+  width: 100%;
+  > div {
+    width: 100%;
+  }
+  .logInIpt {
+      width: 90%;
+      height: 17.2rem;
+      margin: 10.7rem auto 0;
+      background: #fff;
+      box-shadow: 0rem 0rem 0.9rem 0.1rem rgba(176, 208, 241, 0.6);
+      padding-top: 0.1rem;
+      > div {
+        height: 2.45rem;
+        display: flex;
+        > span {
+          margin: 0.6rem 0.5rem 0 0.75rem;
+          font-size: 1rem
+        }
+    }
+    .userName {
+      border: solid 1px #3b89f9;
+      width: 15.65rem;
+      margin: 2.55rem auto 0;
+      border-radius: 2.5rem;
+      > span {
+        width: 1rem;
+        height: 1.25rem;
+        color: #3b89f9;
+      }
+      > input {
+        width: 78%;
+        height: 1.65rem;
+        margin: 0.4rem 0rem;
+        border: none;
+        font-size: 0.8rem;
+      }
+    }
+    .password {
+        width: 15.65rem;
+        margin-top: 1rem;
+        margin-left: 0.5rem;
+        display: flex;
+        > div {
+          border: solid 1px #3b89f9;
+          border-radius: 2.5rem;
+          width: 12rem;
+          > span {
+            width: 1rem;
+            height: 1.25rem;
+            color: #b1b1b1;
+            margin: 0.6rem 0.25rem 0.5rem 0.75rem;
+            font-size: 1rem
+          }
+          > input {
+            width: 66%;
+            height: 1.65rem;
+            margin: 0.4rem 0rem;
+            border: none;
+            font-size: 0.8rem;
+          }
+        }
+        .getCode {
+            width: 5rem;
+            height: 1.5rem;
+            border-radius: 2.5rem;
+            border: none;
+            background: #3b89f9;
+            color: #fff;
+            margin: 0.4rem 0 0 0.8rem;
+        }
+    }
+    .loginPrompt {
+      font-size: 0.7rem;
+      width: 14rem;
+      color: #3b89f9;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.25rem;
+      li {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    .loginBtn {
+      width: 94%;
+      margin: 0 auto;
+      display: block;
+      height: 2rem;
+      line-height: 2rem;
+      text-align: center;
+      color: #fff;
+      border-radius: 2.5rem;
+      border: none;
+      background:#3b89f9;
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+  }
+}
 </style>

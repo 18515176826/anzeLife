@@ -1,5 +1,5 @@
 <template>
-  <div class="loginInBac">
+  <div class="loginInBaca">
     <div class="logInIpt">
       <div class="userName">
         <span class="icon iconfont">&#xe608;</span>
@@ -19,10 +19,12 @@
 </template>
 
 <script>
+
 export default {
   name: 'App',
   data() {
     return {
+      url: 'http:www.123.com',
       id: 1
     }
   },
@@ -34,13 +36,26 @@ export default {
           id:this.id ,
         }
       })
+    },
+    registerApp() {
+      this.$axios.post(this.url, {
+        name: 'a',
+        password: '123'
+      }).then(res => {
+
+      }).catch(() => {
+        alert('请求失败');
+      })
     }
+  },
+  mounted() {
+    this.registerApp()
   }
 }
 </script>
 
-<style lang="scss">
-.loginInBac {
+<style lang="scss" scoped>
+.loginInBaca {
   background: url(../img/logIn.png);
   background-size: 100%;
   display: flex;
