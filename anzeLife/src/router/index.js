@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Anze from '@/anze/anze'
+import Login from '@/anze/login'
+import Enroll from '@/anze/enroll'
 
 Vue.use(Router)
 
@@ -9,8 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'anze',
-      component: Anze
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/anze/Enroll',
+      name: 'enroll',
+      component: Enroll
     }
   ]
 })

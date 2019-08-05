@@ -1,0 +1,189 @@
+<template>
+  <div class="loginInBac">
+    <div class="logInIpt">
+      <div class="userName">
+        <span class="icon iconfont">&#xe608;</span>
+        <input type="text" placeholder="请输入用户名">
+      </div>
+      <div class="password">
+        <span class="icon iconfont">&#xe60a;</span>
+        <input type="password" placeholder="请输入密码">
+      </div>
+      <ul class="loginPrompt">
+        <li @click="JumpRegister">注册账号</li>
+        <li>其他方式登录</li>
+      </ul>
+      <button class="loginBtn">登录</button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      id: 1
+    }
+  },
+  methods: {
+    JumpRegister() {
+      this.$router.push({  //核心语句
+        path:'/anze/enroll',   //跳转的路径
+        query:{           //路由传参时push和query搭配使用 ，作用时传递参数
+          id:this.id ,
+        }
+      })
+    }
+  }
+}
+</script>
+
+<style lang="scss">
+.loginInBac {
+  background: url(../img/logIn.png);
+  background-size: 100%;
+  display: flex;
+  .logInIpt {
+      width: 90%;
+      height: 17.2rem;
+      margin: 10.7rem auto 0;
+      background: #fff;
+      box-shadow: 0rem 0rem 0.9rem 0.1rem rgba(176, 208, 241, 0.6);
+      > div {
+        width: 15.65rem;
+        height: 2.45rem;
+        border: solid 1px #3b89f9;
+        border-radius: 2.5rem;
+        margin: 0 auto;
+        display: flex;
+        > span {
+          margin: 0.6rem 0.5rem 0 0.75rem;
+          font-size: 1rem
+      }
+      > input {
+        width: 78%;
+        height: 1.65rem;
+        margin: 0.4rem 0rem;
+        border: none;
+        font-size: 0.8rem;
+      }
+    }
+    .userName {
+      margin-top: 2.55rem;
+      > span {
+        width: 1rem;
+        height: 1.25rem;
+        color: #3b89f9;
+      }
+    }
+      .password {
+        margin-top: 1rem;
+        > span {
+          width: 1rem;
+          height: 1.25rem;
+          color: #b1b1b1;
+      }
+    }
+    .loginPrompt {
+      font-size: 0.7rem;
+      width: 14rem;
+      color: #3b89f9;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.25rem;
+    }
+    .loginBtn {
+      width: 94%;
+      margin: 0 auto;
+      display: block;
+      height: 2rem;
+      line-height: 2rem;
+      text-align: center;
+      color: #fff;
+      border-radius: 2.5rem;
+      border: none;
+      background:#3b89f9;
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+// .loginInBac {
+//   background: url(../img/logIn.png);
+//   background-size: 100%;
+//   display: flex;
+//   .logInIpt {
+//     width: 90%;
+//     height: 344px;
+//     margin: 214px auto 0;
+//     background: #fff;
+//     box-shadow: 0px 0px 18px 2px
+// 		rgba(176, 208, 241, 0.6);
+//     > div {
+//       width: 313px;
+//       height: 49px;
+//       border: solid 1px #3b89f9;
+//       border-radius: 50px;
+//       margin: 0 auto;
+//       display: flex;
+//       > span {
+//         margin: 12px 10px 0 15px;
+//         font-size: 20px
+//       }
+//       > input {
+//         width: 78%;
+//         height: 33px;
+//         margin: 8px 0px;
+//         border: none;
+//         font-size: 16px;
+//       }
+//     }
+//     .userName {
+//       margin-top: 51px;
+//       > span {
+//         width: 20px;
+//         height: 25px;
+//         color: #3b89f9;
+//       }
+//     }
+//     .password {
+//       margin-top: 20px;
+//       > span {
+//         width: 20px;
+//         height: 25px;
+//         color: #b1b1b1;
+//       }
+//     }
+//     .loginPrompt {
+//       font-size: 14px;
+//       width: 280px;
+//       color: #3b89f9;
+//       height: 30px;
+//       line-height: 30px;
+//       margin: 0 auto;
+//       display: flex;
+//       justify-content: space-between;
+//       margin-top: 5px;
+//     }
+//     .loginBtn {
+//       width: 94%;
+//       margin: 0 auto;
+//       display: block;
+//       height: 40px;
+//       line-height: 40px;
+//       text-align: center;
+//       color: #fff;
+//       border-radius: 50px;
+//       border: none;
+//       background:#3b89f9;
+//       font-size: 18px;
+//       margin-top: 30px;
+//     }
+//   }
+// }
+</style>

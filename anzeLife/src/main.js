@@ -4,8 +4,9 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Vant from 'vant'
-import '@vant/touch-emulator'
+import './lib/js/restSice.js'
 import './lib/css/reset.css'
+import './lib/iconfont/iconfont.css'
 
 Vue.use(Vant)
 Vue.config.productionTip = false
