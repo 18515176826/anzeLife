@@ -1,5 +1,6 @@
 <template>
   <div class="loginInBac">
+
     <div class="">
       <div class="logInIpt">
         <div class="userName">
@@ -103,6 +104,7 @@ export default {
             background: #3b89f9;
             color: #fff;
             margin: 0.4rem 0 0 0.8rem;
+            font-size: 14px;
         }
     }
     .loginPrompt {

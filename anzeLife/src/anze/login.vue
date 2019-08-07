@@ -3,17 +3,21 @@
     <div class="logInIpt">
       <div class="userName">
         <span class="icon iconfont">&#xe608;</span>
-        <input type="text" placeholder="请输入用户名">
+        <input type="text" v-model="logUserName" placeholder="请输入用户名">
       </div>
       <div class="password">
         <span class="icon iconfont">&#xe60a;</span>
-        <input type="password" placeholder="请输入密码">
+        <input type="password" v-model="logPassWord" placeholder="请输入密码">
       </div>
+      <p class="verify" v-if="nenuVerify === 0">{{ msg | trim}}</p>
+      <p class="verify" v-else-if="nenuVerify === 1"></p>
+      <p class="verify" v-else-if="nenuVerify === -1">{{ msg | trim}}</p>
+      <p class="verify" v-else-if="nenuVerify === 10">{{ msg | trim}}</p>
       <ul class="loginPrompt">
         <li @click="JumpRegister">注册账号</li>
         <li>其他方式登录</li>
       </ul>
-      <button class="loginBtn">登录</button>
+      <button @click="anzeLogin" class="loginBtn">登录</button>
     </div>
   </div>
 </template>
@@ -24,8 +28,11 @@ export default {
   name: 'App',
   data() {
     return {
-      url: 'http:www.123.com',
-      id: 1
+      id: 1,
+      logUserName: '',
+      logPassWord:'',
+      nenuVerify: '',
+      msg: ''
     }
   },
   methods: {
@@ -33,23 +40,47 @@ export default {
       this.$router.push({  //核心语句
         path:'/anze/enroll',   //跳转的路径
         query:{           //路由传参时push和query搭配使用 ，作用时传递参数
-          id:this.id ,
+          id:this.id,
         }
       })
     },
-    registerApp() {
-      this.$axios.post(this.url, {
-        name: 'a',
-        password: '123'
-      }).then(res => {
+    anzeLogin() {
+      let url = '/api/userManger/userLogin';
+      let verifyIpt = /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
+      if(!verifyIpt.test(this.logUserName)) {
+        this.nenuVerify = 10
+        this.msg = '* 用户名格式不正确';
+        return;
+      }
+      if(!this.logUserName) {
+        this.nenuVerify = 10
+        this.msg = '* 用户名不能为空';
+        return
+      }
+      if(!this.logPassWord) {
+        this.nenuVerify = 10
+        this.msg = '* 密码不能为空';
+        return;
+      }
 
+      this.$axios({
+          method:'post',
+          url: url,
+          data:this.Qs.stringify({    //这里是发送给后台的数据
+            userName:this.logUserName,
+            passWord:this.logPassWord
+          })
+        }).then(res => {
+        let code = res.data.code;
+        this.msg = '*' + res.data.msg;
+        this.nenuVerify = code;
       }).catch(() => {
         alert('请求失败');
       })
     }
   },
   mounted() {
-    this.registerApp()
+
   }
 }
 </script>
@@ -60,6 +91,14 @@ export default {
   background-size: 100%;
   display: flex;
   .logInIpt {
+      > .verify {
+        font-size: 14px;
+        color:red;
+        text-indent: 1.5rem;
+        padding: 0.5rem 0 0;
+        min-height: 1rem;
+        line-height: 1rem
+      }
       width: 90%;
       height: 17.2rem;
       margin: 10.7rem auto 0;
@@ -109,7 +148,6 @@ export default {
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      margin-top: 0.25rem;
     }
     .loginBtn {
       width: 94%;
