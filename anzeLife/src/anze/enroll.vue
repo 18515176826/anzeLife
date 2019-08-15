@@ -5,19 +5,19 @@
       <div class="logInIpt">
         <div class="userName">
           <span class="icon iconfont">&#xe608;</span>
-          <input type="text" placeholder="请输入手机号">
+          <input type="text" v-model="phoneNumber" placeholder="请输入手机号">
         </div>
         <div class="password">
           <div>
             <span class="icon iconfont">&#xe60a;</span>
-            <input type="password" placeholder="请输入密码">
+            <input type="password" placeholder="请输入短信验证码">
           </div>
           <input type="button" class="getCode" value="获取验证码">
         </div>
         <ul class="loginPrompt">
           <li>已有账号，登录</li>
         </ul>
-        <button class="loginBtn">注册</button>
+        <button @click="anzeRegister" class="loginBtn">注册</button>
       </div>
     </div>
   </div>
@@ -26,7 +26,49 @@
 <script>
 
 export default {
-  name: ''
+  name: '',
+  data() {
+    return {
+      phoneNumber: ''
+    }
+  },
+  methods: {
+    anzeRegister() {
+      console.log(this.phoneNumber)
+      let url = '/api/userManger/userRegister';
+      let verifyIpt = /^[0-9]+$/;
+      if(!verifyIpt.test(this.phoneNumber)) {
+        this.nenuVerify = 10
+        this.msg = '* 用户名格式不正确';
+        return;
+      }
+      if(!this.phoneNumber) {
+        this.nenuVerify = 10
+        this.msg = '* 手机号不能为空';
+        return
+      }
+      if(!this.logPassWord) {
+        this.nenuVerify = 10
+        this.msg = '* 密码不能为空';
+        return;
+      }
+
+      this.$axios({
+          method:'post',
+          url: url,
+          data:this.Qs.stringify({    //这里是发送给后台的数据
+            userName:this.logUserName,
+            passWord:this.logPassWord
+          })
+        }).then(res => {
+        let code = res.data.code;
+        this.msg = '*' + res.data.msg;
+        this.nenuVerify = code;
+      }).catch(() => {
+        alert('请求失败');
+      })
+    }
+  }
 }
 </script>
 

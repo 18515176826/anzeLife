@@ -3,16 +3,13 @@
     <div class="logInIpt">
       <div class="userName">
         <span class="icon iconfont">&#xe608;</span>
-        <input type="text" v-model="logUserName" placeholder="请输入用户名">
+        <input type="text"  v-model="telephone" placeholder="请输入用户名">
       </div>
       <div class="password">
         <span class="icon iconfont">&#xe60a;</span>
         <input type="password" v-model="logPassWord" placeholder="请输入密码">
       </div>
-      <p class="verify" v-if="nenuVerify === 0">{{ msg | trim}}</p>
-      <p class="verify" v-else-if="nenuVerify === 1"></p>
-      <p class="verify" v-else-if="nenuVerify === -1">{{ msg | trim}}</p>
-      <p class="verify" v-else-if="nenuVerify === 10">{{ msg | trim}}</p>
+      <p class="verify">{{ msg }}</p>
       <ul class="loginPrompt">
         <li @click="JumpRegister">注册账号</li>
         <li>其他方式登录</li>
@@ -29,7 +26,7 @@ export default {
   data() {
     return {
       id: 1,
-      logUserName: '',
+      logTelephone: '',
       logPassWord:'',
       nenuVerify: '',
       msg: ''
@@ -47,16 +44,17 @@ export default {
     anzeLogin() {
       let url = '/api/userManger/userLogin';
       let verifyIpt = /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
-      if(!verifyIpt.test(this.logUserName)) {
-        this.nenuVerify = 10
-        this.msg = '* 用户名格式不正确';
-        return;
-      }
-      if(!this.logUserName) {
+      if(!this.logTelephone) {
         this.nenuVerify = 10
         this.msg = '* 用户名不能为空';
         return
       }
+      if(!verifyIpt.test(this.logTelephone)) {
+        this.nenuVerify = 10
+        this.msg = '* 用户名格式不正确';
+        return;
+      }
+
       if(!this.logPassWord) {
         this.nenuVerify = 10
         this.msg = '* 密码不能为空';
@@ -67,8 +65,8 @@ export default {
           method:'post',
           url: url,
           data:this.Qs.stringify({    //这里是发送给后台的数据
-            userName:this.logUserName,
-            passWord:this.logPassWord
+            userName:this.logTelephone.trim(),
+            telephone:this.logPassWord.trim()
           })
         }).then(res => {
         let code = res.data.code;
