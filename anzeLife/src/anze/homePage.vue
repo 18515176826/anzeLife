@@ -3,7 +3,7 @@
     <swipe-mod :swImg="images"></swipe-mod>
     <main-button :btnsImg="btnsImg"></main-button>
     <handpick></handpick>
-    <bottom-btn :btmBtns="btmBtns"></bottom-btn>
+    <bottom-btn :btmBtns="btmBtns" :btnNum="btnNum"></bottom-btn>
   </div>
 </template>
 <script>
@@ -15,6 +15,7 @@ export default {
   name: 'home',
   data() {
     return {
+      btnNum: 0,
       images: [
         {
           imgs: 'https://img.yzcdn.cn/vant/apple-1.jpg'

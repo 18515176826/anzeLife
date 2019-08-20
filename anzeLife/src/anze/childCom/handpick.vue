@@ -86,12 +86,13 @@ export default {
         display: flex;
         padding-bottom: 0.5rem;
         > img {
-          width: 3.5rem;
+          width: 5rem;
           height: 3.5rem;
           margin-right: 0.2rem;
         }
         > div {
           height: 3.5rem;
+          width: 12rem;
           font-size: 12px;
           overflow: hidden;
           line-height: 1.1rem;

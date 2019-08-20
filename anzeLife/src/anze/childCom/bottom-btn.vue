@@ -2,7 +2,7 @@
   <div class="footer_sty">
     <van-row>
       <van-col v-for="(data, ind) in btmBtns" :key="ind" span="6">
-        <div class="btmBtns" :class="{'firstStyle': ind==0}">
+        <div class="btmBtns" :class="{'firstStyle': ind==btnNum}">
           <i class="iconfont">{{data.imgName}}</i>
           <p>{{data.modBtnMame}}</p>
         </div>
@@ -18,6 +18,9 @@ export default {
   props: {
     "btmBtns": {
       type: Array
+    },
+    "btnNum": {
+      type: Object
     }
   },
   data() {
