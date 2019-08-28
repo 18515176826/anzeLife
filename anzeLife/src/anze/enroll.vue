@@ -5,18 +5,20 @@
       <div class="logInIpt">
         <div class="userName">
           <span class="icon iconfont">&#xe608;</span>
-          <input type="text" v-model="phoneNumber" placeholder="请输入手机号">
+          <input type="text" v-model="logUserName" placeholder="请输入手机号">
         </div>
         <div class="password">
           <div>
             <span class="icon iconfont">&#xe60a;</span>
-            <input type="password" placeholder="请输入短信验证码">
+            <input type="password" v-model="logPassWord" placeholder="请输入短信验证码">
           </div>
           <input type="button" class="getCode" value="获取验证码">
         </div>
+         <p class="verify">{{ msg }}</p>
         <ul class="loginPrompt">
           <li>已有账号，登录</li>
         </ul>
+
         <button @click="anzeRegister" class="loginBtn">注册</button>
       </div>
     </div>
@@ -29,26 +31,24 @@ export default {
   name: '',
   data() {
     return {
-      phoneNumber: ''
+      logUserName: '',
+      logPassWord: '',
+      msg: ''
     }
   },
   methods: {
     anzeRegister() {
-      console.log(this.phoneNumber)
       let url = '/api/userManger/userRegister';
-      let verifyIpt = /^[0-9]+$/;
-      if(!verifyIpt.test(this.phoneNumber)) {
-        this.nenuVerify = 10
+      let verifyIpt = /^[0-9]*$/;
+      if(!verifyIpt.test(this.logUserName)) {
         this.msg = '* 用户名格式不正确';
         return;
       }
-      if(!this.phoneNumber) {
-        this.nenuVerify = 10
+      if(!this.logUserName) {
         this.msg = '* 手机号不能为空';
         return
       }
       if(!this.logPassWord) {
-        this.nenuVerify = 10
         this.msg = '* 密码不能为空';
         return;
       }
@@ -57,13 +57,16 @@ export default {
           method:'post',
           url: url,
           data:this.Qs.stringify({    //这里是发送给后台的数据
-            userName:this.logUserName,
+            telephone:this.logUserName,
             passWord:this.logPassWord
           })
         }).then(res => {
-        let code = res.data.code;
         this.msg = '*' + res.data.msg;
-        this.nenuVerify = code;
+        if(res.data.code == 0) {
+          let code = res.data.code;
+          this.nenuVerify = code;
+          this.$router.push({path:'/anze/homePage'});
+        }
       }).catch(() => {
         alert('请求失败');
       })
@@ -73,6 +76,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.verify {
+    font-size: 14px;
+    color:red;
+    text-indent: 1.5rem;
+    padding: 0.5rem 0 0;
+    min-height: 1rem;
+    line-height: 1rem
+  }
 .loginInBac {
   background: url(../img/enr.png);
   background-size: 100%;

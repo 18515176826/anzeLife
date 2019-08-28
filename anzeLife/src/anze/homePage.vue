@@ -3,7 +3,7 @@
     <swipe-mod :swImg="images"></swipe-mod>
     <main-button :btnsImg="btnsImg"></main-button>
     <handpick></handpick>
-    <bottom-btn :btmBtns="btmBtns" :btnNum="btnNum"></bottom-btn>
+    <bottom-btn :btnNum="btnNum"></bottom-btn>
   </div>
 </template>
 <script>
@@ -58,24 +58,6 @@ export default {
           bName: '全城优惠'
         }
       ],
-      btmBtns: [
-        {
-          imgName: '\ue60e',
-          modBtnMame: '首页'
-        },
-        {
-          imgName: '\ue609',
-          modBtnMame: '发布'
-        },
-        {
-          imgName: '\ue60c',
-          modBtnMame: '精选'
-        },
-        {
-          imgName: '\ue60d',
-          modBtnMame: '我的'
-        }
-      ]
     }
   },
   components: {

@@ -1,15 +1,15 @@
 <template>
   <div class="issuePage">
-    <div class="issueTit">选择分类</div>
+    <div class="issueTit">发布信息</div>
     <div class="modBtns">
-      <div v-for="(data, ind) in modNames" :key="ind">
+      <div v-for="(data, ind) in modNames" @click="moduleJump(jumpUrl)" :key="ind">
         <img v-bind:src="data.images" alt="">
         <p>{{data.name}}</p>
       </div>
       <span class="levelCenter"></span>
       <span class="verticalCenter"></span>
     </div>
-    <bottom-btn :btmBtns="btmBtns" :btnNum="1"></bottom-btn>
+    <bottom-btn :btnNum="1"></bottom-btn>
   </div>
 </template>
 <script>
@@ -18,6 +18,7 @@ export default {
   name: 'postMessage',
   data() {
     return {
+      jumpUrl: '/anze/releaseForm',
       modNames: [
         {
           name: '基层服务',
@@ -39,21 +40,33 @@ export default {
       btmBtns: [
         {
           imgName: '\ue60e',
-          modBtnMame: '首页'
+          modBtnMame: '首页',
+          jumpLink: '/anze/homePage'
         },
         {
           imgName: '\ue609',
-          modBtnMame: '发布'
+          modBtnMame: '发布',
+          jumpLink: '/anze/postMessage'
         },
         {
           imgName: '\ue60c',
-          modBtnMame: '精选'
+          modBtnMame: '精选',
+          jumpLink: '/anze/selectContent'
         },
         {
           imgName: '\ue60d',
-          modBtnMame: '我的'
+          modBtnMame: '我的',
+          jumpLink: '/anze/myMge'
         }
       ]
+    }
+  },
+  mounted() {
+
+  },
+  methods: {
+    moduleJump(path) {
+      this.$router.push({path, query:{routerUrl: this.$route.path}});
     }
   },
   components: {
