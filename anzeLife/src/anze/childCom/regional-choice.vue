@@ -4,6 +4,7 @@
       v-model="show"
       position="bottom"
     >
+
     <van-area :area-list="areaList" :columns-num="3" title="标题" />
     </van-popup>
   </div>
