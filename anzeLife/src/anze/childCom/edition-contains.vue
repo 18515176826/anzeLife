@@ -2,6 +2,7 @@
   <div>
     <div class="issueTit">内容填写</div>
     <vue-html5-editor :content="content"  :height="500" :z-index="1000" :auto-height="true" :show-module-name="false"></vue-html5-editor>
+
   </div>
 </template>
 <script>
