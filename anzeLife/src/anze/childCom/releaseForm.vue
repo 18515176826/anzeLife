@@ -25,20 +25,30 @@
         @click-right-icon="$toast('question')"
       />
       <van-field
-        v-model="parameter.phone"
+        v-model="parameter.address"
         required
         clearable
         label="地区"
         placeholder="选择省/市/区"
-        @click-right-icon="showAddr"
+        @click="showAddr"
+      />
+      <van-field
+        v-model="parameter.detailedAddress"
+        required
+        clearable
+        label="详细地址"
+        placeholder="请输入详细地址"
       />
     </van-cell-group>
-    <van-popup v-module="showPopup" position="top">
-      <van-area :area-list="areaList" />
-    </van-popup>
+    <van-button @click="compileContent" class="compile" type="primary" size="large">编辑内容</van-button>
+    <regional-choice
+      ref="selectfood"
+      @setAddress="setAddress">
+    </regional-choice>
   </div>
 </template>
 <script>
+import regionalChoice from '@/anze/childCom/regional-choice'
 import placeJson from '@/lib/js/place.js'
 export default {
   data() {
@@ -48,7 +58,8 @@ export default {
       parameter: {
         headline: '',
         phone: '',
-
+        address:'',
+        detailedAddress: ''
       }
     }
   },
@@ -60,16 +71,28 @@ export default {
       this.$router.go(-1);
     },
     showAddr() {
-
+      this.$refs.selectfood.siteShow()
+    },
+    setAddress(res) {
+      this.parameter.address = res;
+    },
+    compileContent() {
+      let path = '/anze/releaseForm';
+      this.$router.push({path});
     }
   },
   components: {
-
+    'regional-choice': regionalChoice,
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.compile {
+  width: 90%;
+  display: block;
+  margin: 1rem auto 0;
+}
 .issueTitBox {
   background: #f0f3f5;
   position: absolute;
