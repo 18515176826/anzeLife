@@ -77,7 +77,7 @@ export default {
       this.parameter.address = res;
     },
     compileContent() {
-      let path = '/anze/releaseForm';
+      let path = '/anze/editionContains';
       this.$router.push({path});
     }
   },

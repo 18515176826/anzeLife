@@ -7,6 +7,7 @@ import postMessage from '@/anze/post-message'
 import selectContent from '@/anze/select-content'
 import myMge from '@/anze/myMge'
 import releaseForm from '@/anze/childCom/releaseForm'
+import editionContains from '@/anze/childCom/edition-contains'
 
 Vue.use(Router)
 
@@ -47,6 +48,11 @@ export default new Router({
       path:'/anze/releaseForm',
       name: 'releaseForm',
       component: releaseForm
+    },
+    {
+      path:'/anze/editionContains',
+      name: 'editionContains',
+      component: editionContains
     },
   ]
 })
