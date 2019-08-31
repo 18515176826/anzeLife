@@ -84,6 +84,7 @@ export default {
   components: {
     'regional-choice': regionalChoice,
   }
+
 }
 </script>
 
