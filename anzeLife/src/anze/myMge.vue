@@ -20,6 +20,14 @@
         <div><img src="@/img/my/autonym.png" alt=""><span>实名认证</span></div>
         <div><span class="introduce">身份证</span><i class="iconfont jump">&#xe60f;</i></div>
       </li>
+      <li @click="myRelease">
+        <div><img src="@/img/my/issue.png" alt=""><span>我的发布</span></div>
+        <div><span class="introduce"></span><i class="iconfont jump">&#xe60f;</i></div>
+      </li>
+      <li>
+        <div><img src="@/img/my/manage.png" alt=""><span>我的管理</span></div>
+        <div><span class="introduce"></span><i class="iconfont jump">&#xe60f;</i></div>
+      </li>
     </ul>
     <bottom-btn :btnNum="btnNum"></bottom-btn>
   </div>
@@ -60,6 +68,12 @@ export default {
       ]
     }
   },
+  methods: {
+    myRelease() {
+      let path = '/anze/IRelease'
+      this.$router.push({path})
+    }
+  },
   components: {
     'bottom-btn': bottomBtn
   }
@@ -76,7 +90,7 @@ export default {
   right: 0;
   .infoList {
     background: #fff;
-    font-size: 14px;
+    font-size: 0.7rem;
     margin-top: 1rem;
     li {
       margin: 0 0.6rem;
@@ -95,7 +109,7 @@ export default {
         }
         i.jump {
           position: absolute;
-          font-size: 20px;
+          font-size: 1rem;
           color: #7d7d8a;
           top: 0.05rem;
           right: 0;
@@ -117,7 +131,7 @@ export default {
   background: -moz-linear-gradient(left, #207fff , #60b5ff); /* Firefox 3.6 - 15 */
   background: linear-gradient(to left, #207fff , #60b5ff); /* 标准的语法（必须放在最后） */
   .inforTit {
-    font-size: 18px;
+    font-size: 0.9rem;
     color: #fff;
     text-align: center;
     padding-top: 1rem;
@@ -133,11 +147,11 @@ export default {
     .exhibiting {
       margin-left: 0.5rem;
       .exName {
-        font-size: 16px;
+        font-size: 0.8rem;
         padding-top: 0.3rem;
       }
       .exNumber {
-        font-size: 14px;
+        font-size: 0.7rem;
         padding-top: 0.2rem;
         margin-left: 0.1rem;
         > img {
@@ -147,7 +161,7 @@ export default {
     }
     i.exSkip {
       position: absolute;
-      font-size: 20px;
+      font-size: 1rem;
       top: 50%;
       right: 0.4rem;
       margin-top: -0.4rem;

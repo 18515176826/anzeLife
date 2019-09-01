@@ -1,5 +1,9 @@
 <template>
   <div class="handpick">
+    <div class="issueTit">
+      <van-icon @click="getBack" class="getBack" name="arrow-left" />
+      <span>我的发布</span>
+    </div>
     <van-search class="seek" background='rgba(0, 0, 0, 0.1)' placeholder="请输入搜索关键词" v-model="seekVal"/>
     <ul class="todayList">
       <li>
@@ -83,7 +87,6 @@
         </div>
       </li>
     </ul>
-    <bottom-btn :btnNum="btnNum"></bottom-btn>
   </div>
 </template>
 <script>
@@ -92,9 +95,14 @@ export default {
   name: 'home',
   data() {
     return {
+      seekVal: '',
       btnNum: 2,
-      seekVal:''
     }
+  },
+  methods: {
+    getBack() {
+      this.$router.go(-1);
+    },
   },
   components: {
     'bottom-btn': bottomBtn
@@ -103,6 +111,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.issueTit {
+  height: 2.5rem;
+  font-size: 0.8rem;
+  background: -webkit-linear-gradient(left, #207fff , #6bbfff); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(left, #207fff , #6bbfff); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(left, #207fff , #6bbfff); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to left, #207fff , #6bbfff); /* 标准的语法 */
+  color: #fff;
+  line-height: 2.5rem;
+  text-align: center;
+  .getBack {
+      position: absolute;
+      min-width: 3rem;
+      height: 100%;
+      line-height: 2.5rem;
+      text-align: left;
+      text-indent: 0.2rem;
+      left: 0;
+      top: 0;
+    }
+}
   .handpick {
     background: #f1f4f8;
       .todayList {
@@ -132,18 +161,18 @@ export default {
               overflow: hidden;
               text-overflow:ellipsis;
               .hanTit {
-                font-size: 0.7rem;
+                font-size: 14px;
                 font-weight: bold;
                 color: #333;
                 line-height: 1rem;
               }
               .author{
-                font-size: 0.6rem;
+                font-size: 12px;
                 color: #333;
                 line-height: 1rem;
               }
               .content {
-                font-size: 0.6rem;
+                font-size: 12px;
                 color: #666;
                 line-height: 0.75rem;
               }

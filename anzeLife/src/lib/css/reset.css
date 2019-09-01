@@ -5,8 +5,11 @@ html, head, meta, title, link, body, div, span, a, ul, li, ol, li, p, i, img, in
 ul li, ol li {
 	list-style: none;
 }
-body {
+body, html {
     font-family: "Microsoft YaHei";
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 input {
     outline: none;
@@ -38,3 +41,10 @@ a {
 	clear: both;
 }
 
+
+
+.html-edit .content{
+  max-height: 60vh;
+  overflow: auto;
+  height: 60vh;
+ }

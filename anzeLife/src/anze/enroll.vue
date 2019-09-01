@@ -15,11 +15,10 @@
           <input type="button" class="getCode" value="获取验证码">
         </div>
          <p class="verify">{{ msg }}</p>
-        <ul class="loginPrompt">
-          <li>已有账号，登录</li>
-        </ul>
-
         <button @click="anzeRegister" class="loginBtn">注册</button>
+        <ul class="loginPrompt">
+          <li @click="goToLogin">已有账号，登录</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -70,6 +69,9 @@ export default {
       }).catch(() => {
         alert('请求失败');
       })
+    },
+    goToLogin() {
+      this.$router.push({path:'/'});
     }
   }
 }
@@ -94,7 +96,7 @@ export default {
   }
   .logInIpt {
       width: 90%;
-      height: 17.2rem;
+      height: 16rem;
       margin: 10.7rem auto 0;
       background: #fff;
       box-shadow: 0rem 0rem 0.9rem 0.1rem rgba(176, 208, 241, 0.6);
@@ -173,6 +175,7 @@ export default {
       li {
         width: 100%;
         text-align: center;
+        margin-top: 0.5rem;
       }
     }
     .loginBtn {
@@ -187,7 +190,7 @@ export default {
       border: none;
       background:#3b89f9;
       font-size: 0.9rem;
-      margin-top: 1.5rem;
+      margin-top: 0.5rem;
     }
   }
 }

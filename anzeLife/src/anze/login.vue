@@ -7,7 +7,7 @@
       </div>
       <div class="password">
         <span class="icon iconfont">&#xe60a;</span>
-        <input type="password" v-model="logPassWord" placeholder="请输入密码">
+        <input type="password" v-model="passWord" placeholder="请输入密码">
       </div>
       <p class="verify">{{ msg }}</p>
       <ul class="loginPrompt">
@@ -26,8 +26,8 @@ export default {
   data() {
     return {
       id: 1,
-      logTelephone: '',
-      logPassWord:'',
+      telephone: '',
+      passWord:'',
       nenuVerify: '',
       msg: ''
     }
@@ -44,18 +44,18 @@ export default {
     anzeLogin() {
       let url = '/api/userManger/userLogin';
       let verifyIpt = /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
-      if(!this.logTelephone) {
+      if(!this.telephone) {
         this.nenuVerify = 10
         this.msg = '* 用户名不能为空';
         return
       }
-      if(!verifyIpt.test(this.logTelephone)) {
+      if(!verifyIpt.test(this.telephone)) {
         this.nenuVerify = 10
         this.msg = '* 用户名格式不正确';
         return;
       }
 
-      if(!this.logPassWord) {
+      if(!this.passWord) {
         this.nenuVerify = 10
         this.msg = '* 密码不能为空';
         return;
@@ -65,15 +65,21 @@ export default {
           method:'post',
           url: url,
           data:this.Qs.stringify({    //这里是发送给后台的数据
-            userName:this.logTelephone.trim(),
-            telephone:this.logPassWord.trim()
+            userName:this.telephone.trim(),
+            telephone:this.passWord.trim()
           })
         }).then(res => {
         let code = res.data.code;
         this.msg = '*' + res.data.msg;
         this.nenuVerify = code;
+        this.$router.push({path:'/anze/homePage'});
       }).catch(() => {
-        alert('请求失败');
+        this.$toast.loading({
+          type: 'success',
+          mask: false,
+          duration: 500,
+          message: '请求失败...'
+        });
       })
     }
   },

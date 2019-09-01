@@ -8,6 +8,8 @@ import selectContent from '@/anze/select-content'
 import myMge from '@/anze/myMge'
 import releaseForm from '@/anze/childCom/releaseForm'
 import editionContains from '@/anze/childCom/edition-contains'
+import contentDetails from '@/anze/childCom/content-details'
+import IRelease from '@/anze/childCom/I-release'
 
 Vue.use(Router)
 
@@ -17,42 +19,62 @@ export default new Router({
     {
       path: '/',
       name: 'login',
-      component: Login
+      component: Login,
+      meta: {keepAlive: false}
     },
     {
       path: '/anze/Enroll',
       name: 'enroll',
-      component: Enroll
+      component: Enroll,
+      meta: {keepAlive: false}
     },
     {
       path: '/anze/homePage',
       name: 'homePage',
       component: HomePage,
+      meta: {keepAlive: false}
     },
     {
       path:'/anze/postMessage',
       name: 'postMessage',
-      component: postMessage
+      component: postMessage,
+      meta: {keepAlive: false}
     },
     {
       path:'/anze/selectContent',
       name: 'selectContent',
-      component: selectContent
+      component: selectContent,
+      meta: {keepAlive: false}
     },
     {
       path:'/anze/myMge',
       name: 'myMge',
-      component: myMge
+      component: myMge,
+      meta: {keepAlive: false}
     },
     {
       path:'/anze/releaseForm',
       name: 'releaseForm',
-      component: releaseForm
+      component: releaseForm,
+      meta: {keepAlive: false}
     },
     {
       path:'/anze/editionContains',
       name: 'editionContains',
-      component: editionContains
+      component: editionContains,
+      meta: {keepAlive: false}
+    },
+    {
+      path:'/anze/contentDetails',
+      name: 'contentDetails',
+      component: contentDetails,
+      meta: {}
+    },
+    {
+      path:'/anze/IRelease',
+      name: 'IRelease',
+      component: IRelease,
+      meta: {}
     },
   ]
 })

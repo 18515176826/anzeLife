@@ -2,32 +2,11 @@
   <div class="handpickBody">
     <p class="todayPop">今日热门</p>
     <ul class="todayList">
-      <li>
-        <div class="smalTitle">小手拉大手共建好家园</div>
+      <li v-for="(item, ind) in information" :key="ind">
+        <div class="smalTitle">{{item.title}}</div>
         <div class="contentMod">
           <img src="@/img/boyImg/icon_8.png" alt="">
-          <div>近日，为助力安泽创建国家级卫生县城，进一步通过活动提升全县青少年文明素养，并带动社会形成创卫合力，由安泽县关工委牵头，县教科局，住建局等部门在全县中小学范围内开展了“小手拉大手共建好家园”青少年创卫文明监督活动。</div>
-        </div>
-      </li>
-      <li>
-        <div class="smalTitle">小手拉大手共建好家园</div>
-        <div class="contentMod">
-          <img src="@/img/boyImg/icon_8.png" alt="">
-          <div>近日，为助力安泽创建国家级卫生县城，进一步通过活动提升全县青少年文明素养，并带动社会形成创卫合力，由安泽县关工委牵头，县教科局，住建局等部门在全县中小学范围内开展了“小手拉大手共建好家园”青少年创卫文明监督活动。</div>
-        </div>
-      </li>
-      <li>
-        <div class="smalTitle">小手拉大手共建好家园</div>
-        <div class="contentMod">
-          <img src="@/img/boyImg/icon_8.png" alt="">
-          <div>近日，为助力安泽创建国家级卫生县城，进一步通过活动提升全县青少年文明素养，并带动社会形成创卫合力，由安泽县关工委牵头，县教科局，住建局等部门在全县中小学范围内开展了“小手拉大手共建好家园”青少年创卫文明监督活动。</div>
-        </div>
-      </li>
-      <li>
-        <div class="smalTitle">小手拉大手共建好家园</div>
-        <div class="contentMod">
-          <img src="@/img/boyImg/icon_8.png" alt="">
-          <div>近日，为助力安泽创建国家级卫生县城，进一步通过活动提升全县青少年文明素养，并带动社会形成创卫合力，由安泽县关工委牵头，县教科局，住建局等部门在全县中小学范围内开展了“小手拉大手共建好家园”青少年创卫文明监督活动。</div>
+          <div v-html="item.content"></div>
         </div>
       </li>
     </ul>
@@ -40,13 +19,19 @@ import '@/lib/js/restSice.js'
 export default {
   name: 'hand',
   props: {
-
+    information: {
+      type: Array,
+      default(data) {
+        console.log(data);
+      }
+    }
   },
   data() {
     return {
       page: "1",
       size: "10",
-      list: []
+      list: [],
+      informationHtml: ''
     }
   },
 
@@ -54,7 +39,7 @@ export default {
     InfiniteLoading
   },
   mounted() {
-
+    // this.informationHtml =
   }
 }
 </script>
@@ -68,17 +53,17 @@ export default {
   }
   .todayPop {
     color: #666;
-    font-size: 16px;
+    font-size: 0.8rem;
     padding: 0.5rem 0 0.5rem 0.5rem;
   }
   .todayList {
     width: 95%;
     margin: 0 auto;
-    height: 12rem;
+    height: 11rem;
     overflow-y: auto;
     >li {
       .smalTitle {
-        font-size: 14px;
+        font-size: 0.7rem;
         font-weight: bold;
         padding-bottom: 0.5rem;
       }
@@ -93,7 +78,7 @@ export default {
         > div {
           height: 3.5rem;
           width: 12rem;
-          font-size: 12px;
+          font-size: 0.6rem;
           overflow: hidden;
           line-height: 1.1rem;
           text-overflow:ellipsis;

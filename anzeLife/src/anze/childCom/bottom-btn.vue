@@ -56,7 +56,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.btnNum)
+
   }
 }
 </script>
@@ -77,7 +77,7 @@ export default {
         font-size: 1.2rem;
       }
       > p {
-        font-size: 14px;
+        font-size: 0.7rem;
       }
     }
     .firstStyle {

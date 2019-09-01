@@ -2,7 +2,7 @@
   <div class="homepageBac">
     <swipe-mod :swImg="images"></swipe-mod>
     <main-button :btnsImg="btnsImg"></main-button>
-    <handpick></handpick>
+    <handpick :information="information"></handpick>
     <bottom-btn :btnNum="btnNum"></bottom-btn>
   </div>
 </template>
@@ -16,6 +16,7 @@ export default {
   data() {
     return {
       btnNum: 0,
+      information: [],
       images: [
         {
           imgs: 'https://img.yzcdn.cn/vant/apple-1.jpg'
@@ -59,6 +60,34 @@ export default {
         }
       ],
     }
+  },
+  methods:{
+    inforPush() {
+      let inforUrl = '/api/article/queryArticle'
+      this.$axios({
+          method:'post',
+          url: inforUrl,
+          data:this.Qs.stringify({    //这里是发送给后台的数据
+            type: 1,
+            currentPage: 1,
+            limit: 10
+          })
+        }).then(res => {
+          if(res.data.data.length > 0) {
+            this.information = res.data.data;
+          }
+      }).catch(() => {
+        this.$toast.loading({
+          type: 'success',
+          mask: false,
+          duration: 500,
+          message: '请求失败...'
+        });
+      })
+    }
+  },
+  mounted() {
+    this.inforPush();
   },
   components: {
     'swipe-mod': swipeMod,

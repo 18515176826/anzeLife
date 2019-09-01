@@ -2,7 +2,7 @@
   <div class="issuePage">
     <div class="issueTit">发布信息</div>
     <div class="modBtns">
-      <div v-for="(data, ind) in modNames" @click="moduleJump(jumpUrl)" :key="ind">
+      <div v-for="(data, ind) in modNames" @click="moduleJump(jumpUrl, data.type)" :key="ind">
         <img v-bind:src="data.images" alt="">
         <p>{{data.name}}</p>
       </div>
@@ -22,20 +22,25 @@ export default {
       modNames: [
         {
           name: '基层服务',
-          images: require('@/img/modBtns/issue1.png')
+          images: require('@/img/modBtns/issue1.png'),
+          type: 1
         },
         {
           name: '惠民政策',
-          images: require('@/img/modBtns/issue2.png')
-        },
-        {
-          name: '民意调查',
-          images: require('@/img/modBtns/issue3.png')
+          images: require('@/img/modBtns/issue2.png'),
+          type: 2
         },
         {
           name: '本地资讯',
-          images: require('@/img/modBtns/issue4.png')
+          images: require('@/img/modBtns/issue4.png'),
+          type: 3
         },
+        {
+          name: '公共教育',
+          images: require('@/img/modBtns/issue3.png'),
+          type: 4
+        },
+
       ],
       btmBtns: [
         {
@@ -65,9 +70,10 @@ export default {
 
   },
   methods: {
-    moduleJump(path) {
-      this.$router.push({path, query:{routerUrl: this.$route.path}});
-    }
+    moduleJump(path, modType) {
+      this.$router.push({path, query:{routerUrl: this.$route.path, type:modType}});
+    },
+
   },
   components: {
     'bottom-btn': bottomBtn
@@ -78,12 +84,10 @@ export default {
 <style lang="scss" scoped>
   .issuePage {
     background: #f0f3f5;
-    height: 100%;
-    position: absolute;
-    width: 100%;
+    height: 100vh;
     .issueTit {
       height: 2.5rem;
-      font-size: 16px;
+      font-size: 0.8rem;
       background: -webkit-linear-gradient(left, #207fff , #6bbfff); /* Safari 5.1 - 6.0 */
       background: -o-linear-gradient(left, #207fff , #6bbfff); /* Opera 11.1 - 12.0 */
       background: -moz-linear-gradient(left, #207fff , #6bbfff); /* Firefox 3.6 - 15 */
@@ -112,7 +116,7 @@ export default {
         p {
           margin-top: 0.5rem;
           text-align: center;
-          font-size: 16px;
+          font-size: 0.8rem;
         }
       }
       .levelCenter {
