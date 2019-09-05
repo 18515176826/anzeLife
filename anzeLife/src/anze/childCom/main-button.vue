@@ -3,11 +3,12 @@
     <div class="manMods">
       <van-row>
         <van-col
-        span="6"
+          span="6"
           v-for="(data, ind) in btnsImg"
           :key="ind"
+
           >
-          <div class="imgBox">
+          <div class="imgBox" @click="moduleSkip((ind+1), data.bName)">
             <van-image
               width="50%"
               class="modImg"
@@ -32,6 +33,12 @@ export default {
   data() {
     return {
 
+    }
+  },
+  methods: {
+    moduleSkip(ind, titName) {
+      let path = '/anze/IRelease'
+      this.$router.push({path, query:{modId: ind, titName:titName}})
     }
   },
   mounted() {

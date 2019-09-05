@@ -6,7 +6,7 @@
         <img :src="headPortrait" alt="">
         <ul class="exhibiting">
           <li class="exName"><span>{{message.name}}</span></li>
-          <li class="exNumber"><img src="@/img/my/phone.png" alt=""><span>{{message.number}}</span></li>
+          <li class="exNumber"><img src="@/img/my/phone.png" alt=""><span>{{message.myInfor.telephone}}</span></li>
         </ul>
         <i class="iconfont exSkip">&#xe60f;</i>
       </div>
@@ -14,7 +14,7 @@
     <ul class="infoList">
       <li>
         <div><img src="@/img/my/mailbox.png" alt=""><span>邮箱</span></div>
-        <div><span class="introduce">867040722@qq.com</span><i class="iconfont jump">&#xe60f;</i></div>
+        <div><span class="introduce">{{message.myInfor.email}}</span><i class="iconfont jump">&#xe60f;</i></div>
       </li>
       <li>
         <div><img src="@/img/my/autonym.png" alt=""><span>实名认证</span></div>
@@ -42,7 +42,8 @@ export default {
       headPortrait : require('@/img/my/portrait.png'),
       message: {
         name: 'Mr.Zhang',
-        number: '15875452145'
+        number: '15875452145',
+        myInfor: {}
       },
       btmBtns: [
         {
@@ -72,7 +73,27 @@ export default {
     myRelease() {
       let path = '/anze/IRelease'
       this.$router.push({path})
+    },
+    detailsPer() {
+      let inforUrl = '/api/userManger/getUser'
+      this.$axios({
+          method:'get',
+          url: inforUrl,
+        }).then(res => {
+          this.message.myInfor = res.data.data;
+          console.log(res)
+      }).catch(() => {
+        this.$toast.loading({
+          type: 'success',
+          mask: false,
+          duration: 500,
+          message: '请求失败...'
+        });
+      })
     }
+  },
+  mounted() {
+    this.detailsPer();
   },
   components: {
     'bottom-btn': bottomBtn

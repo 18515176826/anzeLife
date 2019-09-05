@@ -64,7 +64,7 @@ export default {
         if(res.data.code == 0) {
           let code = res.data.code;
           this.nenuVerify = code;
-          this.$router.push({path:'/anze/homePage'});
+          this.$router.push({path:'/'});
         }
       }).catch(() => {
         alert('请求失败');

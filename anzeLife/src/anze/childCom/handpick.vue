@@ -2,11 +2,21 @@
   <div class="handpickBody">
     <p class="todayPop">今日热门</p>
     <ul class="todayList">
-      <li v-for="(item, ind) in information" :key="ind">
-        <div class="smalTitle">{{item.title}}</div>
-        <div class="contentMod">
-          <img src="@/img/boyImg/icon_8.png" alt="">
-          <div v-html="item.content"></div>
+      <li @click="articleDetails(item.articleId)" v-for="(item, ind) in information" :key="ind">
+        <div v-if="item.contentImage1 != 'null'">
+          <div class="smalTitle">{{item.title}}</div>
+          <div class="contentMod">
+            <img src="@/img/boyImg/icon_8.png" alt="">
+            <div v-html="item.content"></div>
+          </div>
+        </div>
+        <div v-else>
+          <div class="smalTitle">{{item.title}}</div>
+          <div class="contentMods">
+            <img :src="item.contentImage1" alt="">
+            <img :src="item.contentImage2" alt="">
+            <img :src="item.contentImage3" alt="">
+          </div>
         </div>
       </li>
     </ul>
@@ -34,7 +44,12 @@ export default {
       informationHtml: ''
     }
   },
-
+  methods:{
+    articleDetails(dataId) {
+      let path = '/anze/contentDetails';
+      this.$router.push({path, query:{pathId: dataId}})
+    },
+  },
   components: {
     InfiniteLoading
   },
@@ -74,6 +89,23 @@ export default {
           width: 5rem;
           height: 3.5rem;
           margin-right: 0.2rem;
+        }
+        > div {
+          height: 3.5rem;
+          width: 12rem;
+          font-size: 0.6rem;
+          overflow: hidden;
+          line-height: 1.1rem;
+          text-overflow:ellipsis;
+        }
+      }
+      .contentMods {
+        display: flex;
+        padding-bottom: 0.5rem;
+        > img {
+          width: 30%;
+          height: 3.5rem;
+          margin: 0.5rem;
         }
         > div {
           height: 3.5rem;

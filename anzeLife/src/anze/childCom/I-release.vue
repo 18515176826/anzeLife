@@ -2,7 +2,7 @@
   <div class="handpick">
     <div class="issueTit">
       <van-icon @click="getBack" class="getBack" name="arrow-left" />
-      <span>我的发布</span>
+      <span>{{tName}}</span>
     </div>
     <van-search class="seek" background='rgba(0, 0, 0, 0.1)' placeholder="请输入搜索关键词" v-model="seekVal"/>
     <ul class="todayList">
@@ -97,12 +97,16 @@ export default {
     return {
       seekVal: '',
       btnNum: 2,
+      tName: ''
     }
   },
   methods: {
     getBack() {
       this.$router.go(-1);
     },
+  },
+  mounted() {
+    this.tName = this.$route.query.titName
   },
   components: {
     'bottom-btn': bottomBtn
