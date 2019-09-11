@@ -43,8 +43,8 @@ export default {
       })
     },
     anzeLogin() {
-      // let url = '/api/userManger/userLogin';
-      let url = `/maven-SSM/userManger/userLogin`;
+      let url = '/api/userManger/userLogin';
+      // let url = `/maven-SSM/userManger/userLogin`;
       let verifyIpt = /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
       if(!this.telephone) {
         this.nenuVerify = 10
