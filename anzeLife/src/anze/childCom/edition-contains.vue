@@ -4,7 +4,10 @@
       <!-- <van-icon @click="getBack" class="getBack" name="arrow-left" /> -->
       <span>内容填写</span>
     </div>
-    <vue-html5-editor class="editor-h" :content="content" @change="updateData"  :height="400" :z-index="1000" :auto-height="true" :show-module-name="false"></vue-html5-editor>
+    <div class="editor">
+      <vue-html5-editor class="editor-h" :content="content" @change="updateData"  :height="400" :z-index="1000" :auto-height="true" :show-module-name="false"></vue-html5-editor>
+    </div>
+
     <van-button @click="articleSubmit" class="submitContent" type="primary" size="large">确认发布</van-button>
   </div>
 </template>
@@ -101,10 +104,18 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.editor-h {
-  max-height: 89vh;
+<style lang="scss">
+.editor {
+  max-height: 86vh;
   overflow-y: auto;
+  position: relative;
+}
+.vue-html5-editor>.toolbar {
+  position: fixed;
+  top: 2.4rem;
+}
+.vue-html5-editor>.content {
+  margin-top: 3rem;
 }
 .shadeShow {
   z-index: 1080!important;

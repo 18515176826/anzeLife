@@ -6,7 +6,7 @@
         <div v-if="item.contentImage1 != 'null'">
           <div class="smalTitle">{{item.title}}</div>
           <div class="contentMod">
-            <img src="@/img/boyImg/icon_8.png" alt="">
+            <img :src="item.image" alt="">
             <div v-html="item.content"></div>
           </div>
         </div>

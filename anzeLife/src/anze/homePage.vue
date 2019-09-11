@@ -63,8 +63,8 @@ export default {
   },
   methods:{
     inforPush() {
-      // let inforUrl = '/api/article/queryArticle'
-      let inforUrl = `/maven-SSM/article/queryArticle`
+      let inforUrl = '/api/article/queryArticle'
+      // let inforUrl = `/maven-SSM/article/queryArticle`
       this.$axios({
           method:'post',
           url: inforUrl,
