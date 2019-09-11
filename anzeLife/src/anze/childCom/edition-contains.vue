@@ -7,7 +7,6 @@
     <div class="editor">
       <vue-html5-editor class="editor-h" :content="content" @change="updateData"  :height="400" :z-index="1000" :auto-height="true" :show-module-name="false"></vue-html5-editor>
     </div>
-
     <van-button @click="articleSubmit" class="submitContent" type="primary" size="large">确认发布</van-button>
   </div>
 </template>
