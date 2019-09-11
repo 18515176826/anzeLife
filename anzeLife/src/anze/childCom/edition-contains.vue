@@ -103,7 +103,6 @@ export default {
   }
 }
 </script>
-
 <style lang="scss">
 .editor {
   max-height: 86vh;
@@ -117,6 +116,11 @@ export default {
 .vue-html5-editor>.content {
   margin-top: 3rem;
 }
+
+</style>
+<style lang="scss" scoped>
+
+
 .shadeShow {
   z-index: 1080!important;
 }
