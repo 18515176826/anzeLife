@@ -1,5 +1,5 @@
 <template>
-  <div class="loginInBaca">
+  <div class="loginInBaca" :style="{backgroundImage: 'url(' + require('@/img/login.png') + ')'}">
     <div class="logInIpt">
       <div class="userName">
         <span class="icon iconfont">&#xe608;</span>
@@ -29,7 +29,8 @@ export default {
       telephone: '',
       passWord:'',
       nenuVerify: '',
-      msg: ''
+      msg: '',
+      bacImg: require('@/img/login.png')
     }
   },
   methods: {
@@ -42,7 +43,8 @@ export default {
       })
     },
     anzeLogin() {
-      let url = '/api/userManger/userLogin';
+      // let url = '/api/userManger/userLogin';
+      let url = `/maven-SSM/userManger/userLogin`;
       let verifyIpt = /^[a-zA-Z0-9_\u4e00-\u9fa5]+$/;
       if(!this.telephone) {
         this.nenuVerify = 10
@@ -88,10 +90,8 @@ export default {
   }
 }
 </script>
-
 <style lang="scss" scoped>
 .loginInBaca {
-  background: url(../img/logIn.png);
   background-size: 100%;
   display: flex;
   .logInIpt {

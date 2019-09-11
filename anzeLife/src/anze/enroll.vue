@@ -1,5 +1,5 @@
 <template>
-  <div class="loginInBac">
+  <div class="loginInBac" :style="{backgroundImage: 'url(' + require('@/img/enr.png') + ')'}">
 
     <div class="">
       <div class="logInIpt">
@@ -37,7 +37,8 @@ export default {
   },
   methods: {
     anzeRegister() {
-      let url = '/api/userManger/userRegister';
+      // let url = '/api/userManger/userRegister';
+      let url = `/maven-SSM/userManger/userRegister`;
       let verifyIpt = /^[0-9]*$/;
       if(!verifyIpt.test(this.logUserName)) {
         this.msg = '* 用户名格式不正确';
@@ -87,7 +88,6 @@ export default {
     line-height: 1rem
   }
 .loginInBac {
-  background: url(../img/enr.png);
   background-size: 100%;
   display: flex;
   width: 100%;

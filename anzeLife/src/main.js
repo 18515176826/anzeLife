@@ -8,7 +8,7 @@ import axios from 'axios'
 import VueHtml5Editor from 'vue-html5-editor'
 
 
-import '@static/font-awesome-4.7.0/css/font-awesome.min.css'
+import './font-awesome-4.7.0/css/font-awesome.min.css'
 import 'vant/lib/index.css'
 import './lib/js/restSice.js'
 import './lib/css/reset.css'

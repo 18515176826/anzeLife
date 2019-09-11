@@ -33,7 +33,8 @@ export default {
       this.$router.push({path, query:{pathId: dataId}})
     },
     choiceness() {
-      let inforUrl = '/api/article/queryGoodArticle'
+      // let inforUrl = '/api/article/queryGoodArticle'
+      let inforUrl = `/maven-SSM/article/queryGoodArticle`
       this.$axios({
           method:'get',
           url: inforUrl,
@@ -41,7 +42,6 @@ export default {
           let data = [];
           if(res.statusText == 'OK') {
             this.choicenessList = res.data.data;
-            console.log(this.choicenessList)
           }
       }).catch(() => {
         this.$toast.loading({

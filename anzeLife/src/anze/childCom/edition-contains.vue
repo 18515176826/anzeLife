@@ -39,7 +39,8 @@ export default {
     // },
     articleSubmit() {
       let parameter = this.$route.query.parameter
-      let url= '/api/article/addArticle';
+      // let url= '/api/article/addArticle';
+      let url= `/maven-SSM/article/addArticle`;
       const lod = this.$toast.loading({
         mask: true,
         duration: 0,

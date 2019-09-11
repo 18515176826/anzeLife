@@ -75,7 +75,8 @@ export default {
       this.$router.push({path})
     },
     detailsPer() {
-      let inforUrl = '/api/userManger/getUser'
+      // let inforUrl = '/api/userManger/getUser'
+      let inforUrl = `/maven-SSM/userManger/getUser`
       this.$axios({
           method:'get',
           url: inforUrl,

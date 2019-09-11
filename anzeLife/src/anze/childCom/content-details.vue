@@ -29,7 +29,8 @@ export default {
       this.$router.push({path})
     },
     pageRendering() {
-      let url = '/api/article/queryArticleById';
+      // let url = '/api/article/queryArticleById';
+      let url = `/maven-SSM/article/queryArticleById`;
       this.$axios({
           method:'post',
           url: url,
